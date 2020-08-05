@@ -1,5 +1,14 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:2.3.0.RELEASE")
+	}
+}
+
 plugins {
 	id("org.springframework.boot") version "2.3.2.RELEASE"
 	id("io.spring.dependency-management") version "1.0.9.RELEASE"
