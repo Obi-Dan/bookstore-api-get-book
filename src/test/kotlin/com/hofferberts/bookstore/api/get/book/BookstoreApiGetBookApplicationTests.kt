@@ -23,10 +23,11 @@ class WebMockTest {
 	@Test
 	@Throws(Exception::class)
 	fun greetingShouldReturnMessageFromService() {
-		Mockito.`when`(service?.getBook("1234")).thenReturn(Book("1234", "Mock"))
-		mockMvc!!.perform(MockMvcRequestBuilders.get("/books/1234"))
+		val id = "stuart"
+		Mockito.`when`(service?.getBook(id)).thenReturn(Book(id, "Mock"))
+		mockMvc!!.perform(MockMvcRequestBuilders.get("/books/$id"))
 			.andDo(MockMvcResultHandlers.print())
 			.andExpect(MockMvcResultMatchers.status().isOk)
-			.andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.`is`("1234")))
+			.andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.`is`(id)))
 	}
 }
